@@ -11,9 +11,8 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8 col-xs-12">
+			<div class="col-md-8">
 				<div class="list-group">
-				
 					<a href="${pageContext.request.contextPath }/semesterSummary" class="list-group-item">
 						<h4 class="list-group-item-heading">학기별 이수학점 조회</h4>
 						<p class="list-group-item-text">수강년도, 학기별로 이수 총 학점을 조회합니다.</p>

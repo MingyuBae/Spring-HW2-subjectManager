@@ -24,7 +24,39 @@ public class SugangService {
 		return sugangDAO.insert(sugangData);
 	}
 	
+	public Sugang removeSugangData(String course_code){
+		if(sugangDAO.countSugangByCourseCode(course_code) == 0){
+			/* 수강신청 목록에 해당 교과 코드가 없는경우 */
+			return null;
+		}
+		
+		Sugang sugangData = sugangDAO.getSugangByCourseCode(course_code);
+		
+		if(! sugangDAO.delete(sugangData.getSugang_id())){
+			/* 수강신청 목록에서 삭제하지 못한 경우 */
+			return null;
+		}
+		
+		return sugangData;
+	}
+	
 	public List<Sugang> getSugangList(){
 		return sugangDAO.getSugangList();
+	}
+	
+	public List<Sugang> getSugangSummary(){
+		List<Sugang> sugangSummaryList = sugangDAO.getSugangSummary();
+		
+		int pointSum = 0;
+		for(Sugang summary: sugangSummaryList){
+			pointSum += summary.getCourse_point();
+		}
+		
+		Sugang allSummary = new Sugang();
+		allSummary.setCourse_type("총학점");
+		allSummary.setCourse_point(pointSum);
+		sugangSummaryList.add(allSummary);
+		
+		return sugangSummaryList;
 	}
 }

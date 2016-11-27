@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.ac.hansung.mingyu.spring.subjectManager.model.Sugang;
 
@@ -33,7 +32,7 @@ public class SugangDAO {
 	public boolean delete(Integer sugang_id){
 		String sqlStatement = "DELETE "
 							+ "FROM sugang "
-							+ "WHERE id = ?";
+							+ "WHERE sugang_id = ?";
 		return (jdbcTemplateObject.update(sqlStatement, new Object[]{sugang_id}) == 1);
 	}
 	
@@ -45,7 +44,7 @@ public class SugangDAO {
 		return sugangList;
 	}
 	
-	public Sugang getSugangByCourseCode(Integer course_code){
+	public Sugang getSugangByCourseCode(String course_code){
 		String sqlStatement = "SELECT sugang_id, course_code, course_name, course_type, course_point "
 				+ "FROM sugang "
 				+ "WHERE course_code = ?";
@@ -59,6 +58,28 @@ public class SugangDAO {
 				+ "WHERE course_code = ?";
 		
 		return jdbcTemplateObject.queryForObject(sqlStatement, new Object[]{course_code}, Integer.class);
+	}
+	
+	public List<Sugang> getSugangSummary(){
+		String sqlStatement = "SELECT course_type, SUM(course_point) "
+							+ "FROM sugang "
+							+ "GROUP BY course_type";
+
+		List<Sugang> summaryList = jdbcTemplateObject.query(sqlStatement, new RowMapper<Sugang>(){
+
+			@Override
+			public Sugang mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Sugang summary = new Sugang();
+				
+				summary.setCourse_type(rs.getString("course_type"));
+				summary.setCourse_point(rs.getInt("SUM(course_point)"));
+				
+				return summary;
+			}
+			
+		});
+		
+		return summaryList;
 	}
 
 }

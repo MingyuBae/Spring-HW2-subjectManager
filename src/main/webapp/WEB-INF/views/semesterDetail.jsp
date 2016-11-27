@@ -7,14 +7,14 @@
 <html>
 <head>
 	<jsp:include page="layout/include.jsp"></jsp:include>
-	<title>학기별 이수 학점 조회</title>
+	<title>이수 학점 조회</title>
 </head>
 <body>
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="panel panel-info">
-					<div class="panel-heading">${year }학년 ${semester }학기 수강신청</div>
+					<div class="panel-heading">${year }학년 ${semester }학기 이수학점</div>
 					<table class="table table-bordered table-striped">
 						<thead>
 							<tr>
@@ -70,7 +70,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<a href="${pageContext.request.contextPath }" class="btn btn-info"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 메인화면으로</a>
-				<a href="${pageContext.request.contextPath }/semesterSummary" class="btn btn-success">뒤로가기</a>
+				<a href="${pageContext.request.contextPath }/semesterSummary" class="btn btn-success"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> 뒤로가기</a>
 			</div>
 		</div>
 	</div>

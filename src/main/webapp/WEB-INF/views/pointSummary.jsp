@@ -36,7 +36,7 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-12">
-				<a href="${pageContext.request.contextPath }" class="btn btn-info"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 초기화면으로</a>
+				<a href="${pageContext.request.contextPath }" class="btn btn-info"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 메인화면으로</a>
 			</div>
 		</div>
 	</div>
