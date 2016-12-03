@@ -1,5 +1,10 @@
 package kr.ac.hansung.mingyu.spring.subjectManager.model;
 
+/**
+ * 이수 교과목 정보를 담는 모델
+ * @author MingyuBae
+ *
+ */
 public class Course {
 	private Integer course_year;
 	private String course_semester;

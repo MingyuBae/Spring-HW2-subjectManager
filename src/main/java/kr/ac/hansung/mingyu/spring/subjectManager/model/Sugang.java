@@ -7,6 +7,11 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+/**
+ * 수강신청 내용을 담는 모델
+ * @author MingyuBae
+ *
+ */
 public class Sugang {
 	private Integer sugang_id;
 	
