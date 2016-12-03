@@ -58,7 +58,7 @@
 							<div class="form-group">
 								<label for="course_point" class="col-sm-2 control-label">학점</label>
 								<div class="col-sm-10">
-									<form:input path="course_point" class="form-control"/>
+									<form:input path="course_point" type="number" class="form-control"/>
 								</div>
 								<form:errors path="course_point" class="col-xs-12 text-right help-block"></form:errors>
 							</div>
